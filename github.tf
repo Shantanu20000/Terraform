@@ -1,5 +1,5 @@
 # provider "github" {
-#   token ="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"
+#   token =""
 # }
 # resource "github_repository" "terraform" {
 #     name = "Terraform"
