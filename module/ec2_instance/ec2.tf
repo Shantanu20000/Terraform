@@ -1,11 +1,11 @@
 resource "aws_instance" "my_aws_instance" {
   ami                    = var.my_aws_instance_ami
-  instance_type          = var.my_aws_instance_instance_type
+  instance_type          = var.my_aws_instance_type
   key_name               = var.my_aws_instance_key_name
-  vpc_security_group_ids = aws_security_group.my_sg.id
+  vpc_security_group_ids = ["${aws_security_group.my_sg.id}"]
   //[var.this_aws_instance_sg_id]
   availability_zone = var.my_aws_instance_availability_zone
-  subnet_id         = "${module.vpc.subnet_id}"
+  subnet_id         = var.my_aws_instance_subnet
   
   root_block_device {
     volume_size = var.my_aws_instance_volume_size
@@ -20,8 +20,6 @@ resource "aws_instance" "my_aws_instance" {
     echo "hello Terraform User" > /usr/share/nginx/html/index.html
     systemctl start nginx
     EOF 
-
-
 
   tags = {
 
