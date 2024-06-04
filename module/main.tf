@@ -20,7 +20,7 @@ module "vpc" {
 } 
 
 module "ec2" {
-    source = "./ec2"
+    source = "./ec2-instance"
     my_aws_instance_ami = "ami-0eb5115914ccc4bc2"
     my_aws_instance_instance_type  = "t2.micro"
     //my_aws_instance_subnet = module.aws_vpc.aws_subnet_this_public
