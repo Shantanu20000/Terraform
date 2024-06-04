@@ -2,7 +2,7 @@ variable "my_aws_instance_ami" {
      type = string
 }
 
-variable "my_aws_instance_instance_type" {
+variable "my_aws_instance_type" {
     type = string
 }
 variable "my_aws_instance_key_name" {
@@ -27,6 +27,6 @@ variable "my_aws_instance_tags" {
 variable "my_aws_instance_subnet" {
     type = string
 } 
-variable "my_sg_vpc_id" {
-    type = string
-}   
+#variable "my_sg_vpc_id" {
+#    type = string
+#}   
