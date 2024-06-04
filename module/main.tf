@@ -22,15 +22,15 @@ module "vpc" {
 module "ec2" {
   source                        = "./ec2-instance"
   my_aws_instance_ami           = "ami-00beae93a2d981137"
-  my_aws_instance_instance_type = "t2.micro"
-  //my_aws_instance_subnet = module.aws_vpc.aws_subnet_this_public
+  my_aws_instance_type          = "t2.micro"
   my_aws_instance_key_name          = "shan-verginia"
   my_aws_instance_availability_zone = "us-east-1a"
   my_aws_instance_volume_size       = 8
   my_aws_instance_count             = 2
   my_aws_instance_user_data_base64  = true
   my_aws_instance_tags              = "Terraform_instance"
-  //my_aws_instance_subnet            = module.vpc.subnet_id
-  my_sg_vpc_id                      = module.vpc.vpc_id
+  my_aws_instance_subnet            = "${module.vpc.subnet_id}"
+  //my_sg_vpc_id                    = module.vpc.vpc_id
   //my_aws_vpc_id = module.aws_vpc.aws_vpc_id
+  //my_aws_instance_subnet = module.aws_vpc.aws_subnet_this_public
 }
