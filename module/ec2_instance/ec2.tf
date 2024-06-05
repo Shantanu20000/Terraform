@@ -2,7 +2,7 @@ resource "aws_instance" "my_aws_instance" {
   ami                    = var.my_aws_instance_ami
   instance_type          = var.my_aws_instance_type
   key_name               = var.my_aws_instance_key_name
-  vpc_security_group_ids = ["${aws_security_group.my_sg.id}"]
+  vpc_security_group_ids = [var.security_group_id]
   //[var.this_aws_instance_sg_id]
   availability_zone = var.my_aws_instance_availability_zone
   subnet_id         = var.my_aws_instance_subnet
