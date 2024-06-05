@@ -20,18 +20,18 @@ module "vpc" {
 }
 
 module "ec2" {
-  source                        = "./ec2_instance"
-  my_aws_instance_ami           = "ami-00beae93a2d981137"
-  my_aws_instance_type          = "t2.micro"
+  source                            = "./ec2_instance"
+  my_aws_instance_ami               = "ami-00beae93a2d981137"
+  my_aws_instance_type              = "t2.micro"
   my_aws_instance_key_name          = "shan_ver_key"
   my_aws_instance_availability_zone = "us-east-1a"
   my_aws_instance_volume_size       = 8
   my_aws_instance_count             = 2
   my_aws_instance_user_data_base64  = true
   my_aws_instance_tags              = "Terraform_instance"
-  my_subnet_id                         = module.vpc.my_subnet_pub
-  my_vpc_id                            = module.vpc.my_vpc
-  my_security_group_id                 = module.vpc.my_security_group_id
+  my_subnet_id                      = module.vpc.subnet_id
+  my_vpc_id                         = module.vpc.vpc_id
+  my_security_group_id              = module.vpc.security_group_id
   //my_aws_vpc_id = module.aws_vpc.aws_vpc_id
   //my_aws_instance_subnet = module.aws_vpc.aws_subnet_this_public
 }
