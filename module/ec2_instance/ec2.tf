@@ -12,14 +12,7 @@ resource "aws_instance" "my_aws_instance" {
   }
   count = var.my_aws_instance_count
   //user_data_base64 = var.this_aws_instance_user_data_base64
-  user_data = <<-EOF
-            #!/bin/bash
-    sudo -i
-    yum update -y
-    yum install nginx -y
-    echo "hello Terraform User" > /usr/share/nginx/html/index.html
-    systemctl start nginx
-    EOF 
+  user_data = file(${path.module}/script.sh)
 
   tags = {
 
