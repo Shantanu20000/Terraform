@@ -24,9 +24,12 @@ variable "my_aws_instance_user_data_base64" {
 variable "my_aws_instance_tags" {
     type = string
 } 
-variable "my_aws_instance_subnet" {
+variable "my_subnet_id" {
     type = string
 } 
-variable "my_sg_vpc_id" {
+variable "my_vpc_id" {
     type = string
-}   
+}  
+variable "my_security_group_id" {
+     type = string
+}
