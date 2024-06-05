@@ -12,7 +12,7 @@ resource "aws_instance" "my_aws_instance" {
   }
   count = var.my_aws_instance_count
   //user_data_base64 = var.this_aws_instance_user_data_base64
-  user_data = file(${path.module}/script.sh)
+  user_data = file("${path.module}/script.sh")
 
   tags = {
 
