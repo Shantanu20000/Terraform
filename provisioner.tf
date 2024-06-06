@@ -16,7 +16,7 @@ resource "aws_instance" "web" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = file("${path.module}/id_rsa") # Corrected from 'id.rsa' to 'id_rsa'
+    private_key = file("./id_rsa") # Corrected from 'id.rsa' to 'id_rsa'
     host        = self.public_ip
   }
 
@@ -44,8 +44,8 @@ resource "aws_security_group" "allow_http" {
   }
 
   ingress {
-    from_port   = 443
-    to_port     = 443
+    from_port   = 22
+    to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
