@@ -16,7 +16,7 @@ resource "aws_instance" "web" {
   connection {
     type        = "ssh"
     user        = "ec2-user"
-    private_key = file("./id_rsa") # Corrected from 'id.rsa' to 'id_rsa'
+    private_key = file("./id_rsa") # id_rsa must be present in same dir which have 600 permission
     host        = self.public_ip
   }
 
@@ -42,7 +42,7 @@ resource "aws_security_group" "allow_http" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
+# 22 port must for every instance for ssh access
   ingress {
     from_port   = 22
     to_port     = 22
