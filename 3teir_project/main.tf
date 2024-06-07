@@ -8,7 +8,7 @@ variable "instance_type" {
 }
 
 resource "aws_instance" "web" {
-  ami                    = "ami-026bc5e6fe8542c1c"   # instacne image already set all application configuration required for three teir
+  ami                    = "ami-026bc5e6fe8542c1c" # instacne image already set all application configuration required for three teir
   instance_type          = var.instance_type
   key_name               = "mumbai_key" #replace your key
   vpc_security_group_ids = [aws_security_group.allow_http.id]
@@ -19,16 +19,22 @@ resource "aws_instance" "web" {
     private_key = file("./id_rsa") # id_rsa must be present in same dir which have 600 permission
     host        = self.public_ip
   }
-   provisioner "remote-exec" {
+  provisioner "remote-exec" {
     inline = [
-      "./root/apache-tomcat/bin/catalina.sh start"
-      ]
+      "sudo chmod 755 /root",
+      "sudo mv -f /root/apache-tomcat /home/ec2-user/"
+    ]
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "sudo ./apache-tomcat/bin/catalina.sh start"
+    ]
   }
 }
 resource "aws_security_group" "allow_http" {
   name        = "allow_http_port"
   description = "Allow HTTP inbound traffic"
-  vpc_id      = "vpc-03cac74c80618b66d" # Replace with your VPC ID
+  vpc_id      = "vpc-0d3dd513545c97adf" # Replace with your VPC ID
 
   ingress {
     from_port   = 80
@@ -36,7 +42,7 @@ resource "aws_security_group" "allow_http" {
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
-# 22 port must for every instance for ssh access
+  # 22 port must for every instance for ssh access
   ingress {
     from_port   = 22
     to_port     = 22
