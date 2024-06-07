@@ -39,7 +39,7 @@ resource "aws_instance" "web" {
       "echo "hellow TF world" > /tmp/text.txt"
       ]
   }
- provisioner "local-exec" {
+ provisioner "remote-exec" {
     script     = "./apache.sh"
   }
 }
