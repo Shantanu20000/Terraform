@@ -29,6 +29,19 @@ resource "aws_instance" "web" {
     content     = "this is Terraform User"
     destination = "/tmp/terraform"
   }
+
+  provisioner "local-exec" {
+    content     = destroy
+    command = "echo 'at delete'"
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "echo "hellow TF world" > /tmp/text.txt"
+      ]
+  }
+ provisioner "local-exec" {
+    script     = "./apache.sh"
+  }
 }
 
 resource "aws_security_group" "allow_http" {
@@ -46,6 +59,18 @@ resource "aws_security_group" "allow_http" {
   ingress {
     from_port   = 22
     to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = 8080
+    to_port     = 8080
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+  ingress {
+    from_port   = 3306
+    to_port     = 3306
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
