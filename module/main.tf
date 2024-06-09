@@ -26,8 +26,7 @@ module "ec2" {
   my_aws_instance_key_name          = "shan_ver_key"
   my_aws_instance_availability_zone = "us-east-1a"
   my_aws_instance_volume_size       = 8
-  my_aws_instance_count             = 1
-  my_instance_count                 = 2
+  my_aws_instance_count             = 2
   my_aws_instance_user_data_base64  = true
   my_aws_instance_tags              = "Terraform_instance"
   my_vpc_id                         = module.vpc.vpc_id
