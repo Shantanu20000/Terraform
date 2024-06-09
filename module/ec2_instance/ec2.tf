@@ -11,7 +11,7 @@ resource "aws_instance" "my_aws_instance" {
   root_block_device {
     volume_size = var.my_aws_instance_volume_size
   }
-  count = var.my_aws_instance_count
+
   //user_data_base64 = var.this_aws_instance_user_data_base64
   user_data = file("${path.module}/script.sh")
 
