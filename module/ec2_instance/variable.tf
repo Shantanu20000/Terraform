@@ -31,9 +31,6 @@ variable "my_vpc_id" {
     type = string
 }  
 
-variable "my_instance_count" {
-    type = number
-}
 variable "my_security_group_id" {
      type = string
 }
