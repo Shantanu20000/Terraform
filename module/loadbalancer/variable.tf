@@ -30,3 +30,7 @@ variable "my_instance_id" {
   type = string
 }
 
+variable "instance_count" {
+  description = "The number of EC2 instances to create"
+  default     = 2
+}
