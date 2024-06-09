@@ -36,18 +36,5 @@ module "ec2" {
   //my_aws_instance_subnet = module.aws_vpc.aws_subnet_this_public
 }
 
-module "alb" {
-  source = "./loadbalancer"
-  my_lb_name                        = "terraform_lb"  
-  my_vpc_id                         = module.vpc.vpc_id
-  my_subnet_id                      = module.vpc.subnet_id
-  my_protocol                       = "HTTP"
-  my_target_group_name              = "terraform_tg"
-  my_security_group_id              = module.vpc.security_group_id
-  my_instance_id                    = module.ec2.instance_id
-//security_group_ids = module.Terraform_sg.Terraform_sg.id
-//Terraform_sg = module.Terraform_sg.Terraform_sg
-//Replace with your security group IDs
-}
 
 
