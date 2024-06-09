@@ -26,3 +26,7 @@ variable "my_protocol" {
     type = string
 }
 
+variable "my_instance_id" {
+  type = string
+}
+
