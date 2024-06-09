@@ -1,3 +1,3 @@
 output "instance_id" {
-  type = "string"
+  value = "aws_instance.my_aws_instance.id"
 }
