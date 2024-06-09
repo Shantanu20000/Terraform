@@ -1,5 +1,5 @@
 resource "aws_alb" "alb" {
-  name               = var.name
+  name               = var.my_lb_name
   internal           = false
   load_balancer_type = "application"
   security_groups  =   var.my_security_group_id
@@ -10,7 +10,7 @@ resource "aws_alb" "alb" {
 }
 
 resource "aws_lb_target_group" "target_group" {
-  name        = var.target_group_name
+  name        = var.my_target_group_name
   port        = 80
   protocol    = var.my_protocol
   vpc_id      = var.my_vpc_id  
